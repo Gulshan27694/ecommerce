@@ -1,0 +1,86 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block title %}Your Cart{% endblock %}
+
+{% block content %}
+<style>
+    .cart-section {
+        max-width: 800px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .cart-title {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px;
+        border-bottom: 1px solid #ddd;
+        font-size: 16px;
+    }
+
+    .cart-item:last-child {
+        border-bottom: none;
+    }
+
+    .cart-item .qty {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .checkout-btn {
+        display: block;
+        width: 100%;
+        background-color: #28a745;
+        color: white;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        padding: 12px;
+        margin-top: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .checkout-btn:hover {
+        background-color: #218838;
+    }
+
+    .empty-cart {
+        text-align: center;
+        font-size: 18px;
+        padding: 40px;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+    }
+</style>
+<table>
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+    </tr>
+    {% for item in cart_items %}
+    <tr>
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>₹{{ item.product.price }}</td>
+        <td>₹{{ item.total_price }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Total: ₹{{ total_price }}</h3>
+<a href="{% url 'checkout' %}" class="btn">Proceed to Checkout</a>
+{% endblock %}

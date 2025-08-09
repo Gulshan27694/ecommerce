@@ -1,0 +1,90 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+    .hero-section {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                    url("{% static 'store/images/timeline.jpg' %}") no-repeat center center;
+        background-size: cover;
+        padding: 100px 20px;
+        color: white;
+        text-align: center;
+        border-radius: 15px;
+        margin-bottom: 40px;
+    }
+
+    .hero-section h2 {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    .hero-section p {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    .btn-shop-now {
+        padding: 12px 30px;
+        background-color: #28a745;
+        border: none;
+        color: white;
+        font-size: 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-shop-now:hover {
+        background-color: #218838;
+    }
+
+    .features {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 40px;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .feature-box {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        flex: 1 1 250px;
+    }
+
+    .feature-box h4 {
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .feature-box p {
+        color: #666;
+    }
+</style>
+
+<div class="hero-section">
+    <h2>Welcome to GULSHAN E-Store</h2>
+    <p>Find the best products at unbeatable prices</p>
+    <a href="{% url 'products' %}" class="btn-shop-now">Shop Now</a>
+</div>
+
+<div class="features">
+    <div class="feature-box">
+        <h4>Fast Delivery</h4>
+        <p>We ensure quick delivery of your orders anywhere in India.</p>
+    </div>
+    <div class="feature-box">
+        <h4>Secure Payment</h4>
+        <p>All transactions are secured with end-to-end encryption.</p>
+    </div>
+    <div class="feature-box">
+        <h4>24/7 Support</h4>
+        <p>Our support team is available anytime to help you.</p>
+    </div>
+</div>
+{% endblock %}
